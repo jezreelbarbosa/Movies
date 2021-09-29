@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Core">
+      <FileRef
+         location = "group:Core/Common">
+      </FileRef>
+      <FileRef
+         location = "group:Core/Networking">
+      </FileRef>
+      <FileRef
+         location = "group:Core/AppStorage">
+      </FileRef>
+      <FileRef
+         location = "group:Core/AppData">
+      </FileRef>
+      <FileRef
+         location = "group:Core/Domain">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Main">
+      <FileRef
+         location = "group:Main/DI">
+      </FileRef>
+      <FileRef
+         location = "group:Main/AppNavigation">
+      </FileRef>
+      <FileRef
+         location = "group:Main/UIComponents">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Features">
+      <FileRef
+         location = "group:Features/MoviesGrid">
+      </FileRef>
+      <FileRef
+         location = "group:Features/FavoriteMovies">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:Movies/Movies.xcodeproj">
+   </FileRef>
+</Workspace>

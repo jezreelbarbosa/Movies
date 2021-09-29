@@ -1,0 +1,50 @@
+# swiftlintconfig
+disabled_rules:
+- void_return
+- nesting
+
+file_length: 550
+line_length: 150
+
+type_name:
+  min_length: 3
+  max_length: 50
+
+identifier_name:
+  min_length:
+    error: 1
+    warning: 3
+  excluded:
+    - s
+    - id
+
+force_cast: error
+force_try: error
+
+opt_in_rules:
+  - force_unwrapping
+
+included:
+  - Core/
+  - Main/
+  - Features/
+
+custom_rules:
+
+  unnecessary_type:
+    name: "Unnecessary Type"
+    regex: '[ a-zA-Z0-9]*(?:let|var) [ a-zA-Z0-9]*: ([a-zA-Z0-9]*)[\? ]*= \1'
+    message: "Type Definition Not Needed"
+    severity: warning
+
+  empty_first_line:
+    name: "Empty First Line"
+    regex: '(^[ a-zA-Z ]*(?:protocol|extension|class|struct|enum) (?!(?:var|let|case))[ a-zA-Z:]*\{\n *\S+)'
+    message: "There should be an empty line after a declaration"
+    severity: warning
+
+  multiple_empty_lines:
+    name: "Multiple Empty Lines"
+    regex: '((?:\s*\n){3,})'
+    message: "There are too many line breaks"
+    severity: error
