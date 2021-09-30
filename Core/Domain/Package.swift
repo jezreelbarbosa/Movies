@@ -23,6 +23,6 @@ let package = Package(
             dependencies: ["Common"]),
         .testTarget(
             name: "DomainTests",
-            dependencies: ["Domain", "Common"])
+            dependencies: ["Domain"])
     ]
 )

@@ -27,6 +27,6 @@ let package = Package(
             dependencies: ["Domain", "AppData", "AppStorage", "Networking", "AppNavigation"]),
         .testTarget(
             name: "DITests",
-            dependencies: ["DI", "Domain", "AppData", "AppStorage", "Networking", "AppNavigation"])
+            dependencies: ["DI"])
     ]
 )

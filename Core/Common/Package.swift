@@ -24,6 +24,7 @@ let package = Package(
             dependencies: ["Swinject", "SwinjectAutoregistration"]),
         .testTarget(
             name: "CommonTests",
-            dependencies: ["Common", "Swinject", "SwinjectAutoregistration"])
+            dependencies: ["Common"],
+            exclude: ["Tests"])
     ]
 )

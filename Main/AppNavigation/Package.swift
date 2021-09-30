@@ -24,6 +24,6 @@ let package = Package(
             dependencies: ["MoviesGrid", "FavoriteMovies"]),
         .testTarget(
             name: "AppNavigationTests",
-            dependencies: ["AppNavigation", "MoviesGrid", "FavoriteMovies"])
+            dependencies: ["AppNavigation"])
     ]
 )

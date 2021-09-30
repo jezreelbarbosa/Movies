@@ -23,6 +23,6 @@ let package = Package(
             dependencies: ["AppData"]),
         .testTarget(
             name: "AppStorageTests",
-            dependencies: ["AppStorage", "AppData"])
+            dependencies: ["AppStorage"])
     ]
 )

@@ -24,6 +24,6 @@ let package = Package(
             dependencies: ["UIComponents", "Domain"]),
         .testTarget(
             name: "MoviesGridTests",
-            dependencies: ["MoviesGrid", "UIComponents", "Domain"])
+            dependencies: ["MoviesGrid"])
     ]
 )

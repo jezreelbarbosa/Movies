@@ -24,6 +24,6 @@ let package = Package(
             dependencies: ["Common", "Stevia"]),
         .testTarget(
             name: "UIComponentsTests",
-            dependencies: ["UIComponents", "Common", "Stevia"])
+            dependencies: ["UIComponents"])
     ]
 )

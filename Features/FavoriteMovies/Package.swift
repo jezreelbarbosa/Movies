@@ -24,6 +24,6 @@ let package = Package(
             dependencies: ["UIComponents", "Domain"]),
         .testTarget(
             name: "FavoriteMoviesTests",
-            dependencies: ["FavoriteMovies", "UIComponents", "Domain"])
+            dependencies: ["FavoriteMovies"])
     ]
 )
