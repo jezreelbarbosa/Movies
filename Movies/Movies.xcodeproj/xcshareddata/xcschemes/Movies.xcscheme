@@ -28,6 +28,78 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FavoriteMovies"
+            BuildableName = "FavoriteMovies"
+            BlueprintName = "FavoriteMovies"
+            ReferencedContainer = "container:../Features/FavoriteMovies">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AppData"
+            BuildableName = "AppData"
+            BlueprintName = "AppData"
+            ReferencedContainer = "container:../Core/AppData">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "Networking"
+            BuildableName = "Networking"
+            BlueprintName = "Networking"
+            ReferencedContainer = "container:../Core/Networking">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AppNavigation"
+            BuildableName = "AppNavigation"
+            BlueprintName = "AppNavigation"
+            ReferencedContainer = "container:../Main/AppNavigation">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "MoviesGrid"
+            BuildableName = "MoviesGrid"
+            BlueprintName = "MoviesGrid"
+            ReferencedContainer = "container:../Features/MoviesGrid">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "Common"
+            BuildableName = "Common"
+            BlueprintName = "Common"
+            ReferencedContainer = "container:../Core/Common">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "DI"
+            BuildableName = "DI"
+            BlueprintName = "DI"
+            ReferencedContainer = "container:../Main/DI">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "Domain"
+            BuildableName = "Domain"
+            BlueprintName = "Domain"
+            ReferencedContainer = "container:../Core/Domain">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AppStorage"
+            BuildableName = "AppStorage"
+            BlueprintName = "AppStorage"
+            ReferencedContainer = "container:../Core/AppStorage">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "UIComponents"
+            BuildableName = "UIComponents"
+            BlueprintName = "UIComponents"
+            ReferencedContainer = "container:../Main/UIComponents">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">

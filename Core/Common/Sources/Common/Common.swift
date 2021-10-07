@@ -4,4 +4,8 @@ public struct Common {
 
     public init() {
     }
+
+    func asdf() {
+
+    }
 }
