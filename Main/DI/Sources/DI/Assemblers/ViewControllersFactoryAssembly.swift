@@ -12,6 +12,7 @@ import AppNavigation
 class ViewControllersFactoryAssembly: Assembly {
 
     func assemble(container: Container) {
-
+        container.register(MoviesGridVCFactory.self) { ViewControllersFactory(resolver: $0) }
+        container.register(FavoriteMoviesVCFactory.self) { ViewControllersFactory(resolver: $0) }
     }
 }

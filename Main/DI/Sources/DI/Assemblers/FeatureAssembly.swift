@@ -15,10 +15,14 @@ import FavoriteMovies
 
 class FeatureAssembly: Assembly {
 
+    // Lifecycle
+
     func assemble(container: Container) {
         assembleMoviesGrid(container: container)
         assembleFavoriteMovies(container: container)
     }
+
+    // Assemblers
 
     func assembleMoviesGrid(container: Container) {
 

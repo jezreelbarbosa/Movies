@@ -1,0 +1,17 @@
+# .slather.yml
+
+coverage_service: html
+workspace: Movies.xcworkspace
+xcodeproj: Movies/Movies.xcodeproj
+scheme: Movies
+#configuration: TestedConfiguration
+#source_directory: path/to/sources/to/include
+#output_directory: path/to/xml_report
+binary_basename:
+  - Movies
+
+ignore:
+  - "../**/Stevia*"
+  - "../**/Swinject*"
+#  - "../**/Tests*"
+#  - "*/*Tests.swift"

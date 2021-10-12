@@ -13,6 +13,8 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
+        .package(url: "https://github.com/Swinject/Swinject.git", from: "2.8.0"),
+        .package(url: "https://github.com/Swinject/SwinjectAutoregistration.git", from: "2.7.0"),
         .package(name: "MoviesGrid", path: "../Features/MoviesGrid"),
         .package(name: "FavoriteMovies", path: "../Features/FavoriteMovies")
     ],
@@ -21,7 +23,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "AppNavigation",
-            dependencies: ["MoviesGrid", "FavoriteMovies"]),
+            dependencies: ["Swinject", "SwinjectAutoregistration", "MoviesGrid", "FavoriteMovies"]),
         .testTarget(
             name: "AppNavigationTests",
             dependencies: ["AppNavigation"])

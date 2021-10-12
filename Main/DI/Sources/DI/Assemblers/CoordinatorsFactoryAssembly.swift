@@ -12,6 +12,6 @@ import AppNavigation
 class CoordinatorsFactoryAssembly: Assembly {
 
     func assemble(container: Container) {
-
+        container.register(AppCoordinatorFactory.self) { CoordinatorsFactory(resolver: $0) }
     }
 }

@@ -19,6 +19,13 @@ class CoordinatorsFactory: DependencyFactory {
     }
 }
 
-extension CoordinatorsFactory {
+extension CoordinatorsFactory: AppCoordinatorFactory {
 
+    func makeMoviesGridCoordinator() -> MoviesGridCoordinator {
+        resolver.resolveSafe(MoviesGridCoordinator.self)
+    }
+
+    func makeFavoriteMoviesCoordinator() -> FavoriteMoviesCoordinator {
+        resolver.resolveSafe(FavoriteMoviesCoordinator.self)
+    }
 }

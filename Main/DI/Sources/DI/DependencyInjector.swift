@@ -17,7 +17,7 @@ public class DependencyInjector {
 
     // Properties
 
-    private let window: UIWindow?
+    private weak var window: UIWindow?
 
     // Initialization
 
@@ -29,18 +29,18 @@ public class DependencyInjector {
 
     public func build(completion: (_ assembler: Assembler, _ appCoordinator: AppCoordinator) -> Void) {
         let assembler = Assembler([
-            // Assembler Principal
-            CoordinatorsFactoryAssembly(),
-            ViewControllersFactoryAssembly(),
-            CoodinatorAssembly(window: self.window),
-
-            // Assembler dos frameworks
+            // Core Assemblers
             DomainAssembly(),
             AppDataAssembly(),
-            NetworkingAssembly(),
             StorageAssembly(),
+            NetworkingAssembly(),
 
-            // Assembler das features
+            // Factory Assemblers
+            CoordinatorsFactoryAssembly(),
+            ViewControllersFactoryAssembly(),
+
+            // Main Assemblers
+            CoodinatorAssembly(window: window),
             FeatureAssembly()
         ])
         let appCoordinator = assembler.resolver.resolveSafe(AppCoordinator.self)
