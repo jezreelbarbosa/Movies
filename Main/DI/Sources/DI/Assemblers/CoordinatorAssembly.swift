@@ -10,6 +10,8 @@ import UIKit
 import Common
 import Swinject
 import AppNavigation
+import MoviesGrid
+import FavoriteMovies
 
 class CoodinatorAssembly: Assembly {
 
@@ -28,13 +30,19 @@ class CoodinatorAssembly: Assembly {
         assembleMoviesGridCoordinator(container: container)
         assembleFavoriteMoviesCoordinator(container: container)
     }
+}
 
-    // Assemblers
+// MARK: - Assemblers
+
+extension CoodinatorAssembly {
 
     func assembleAppCoordinator(container: Container) {
-        let tabBar = UITabBarController()
+        let tab = UITabBarController()
+        if #available(iOS 15.0, *) {
+            tab.tabBar.scrollEdgeAppearance = tab.tabBar.standardAppearance
+        }
         let factory = container.resolveSafe(AppCoordinatorFactory.self)
-        let appCoordinator = AppCoordinator(window: window, tabBarController: tabBar, coordinatorsFactory: factory)
+        let appCoordinator = AppCoordinator(window: window, tabBarController: tab, coordinatorsFactory: factory)
         container.register(AppCoordinator.self) { _ in appCoordinator }
     }
 
@@ -42,7 +50,7 @@ class CoodinatorAssembly: Assembly {
         container.register(MoviesGridCoordinator.self) { resolver in
             let appCoordinator = resolver.resolveSafe(AppCoordinator.self)
             return appCoordinator.childCoordinators.first(typeOf: MoviesGridCoordinator.self) ??
-            MoviesGridCoordinator(navigationController: UINavigationController(), delegate: appCoordinator,
+            MoviesGridCoordinator(navigationController: MoviesGridNavigationController(), delegate: appCoordinator,
                                   viewControllersFactory: resolver.resolveSafe(MoviesGridVCFactory.self))
         }
     }

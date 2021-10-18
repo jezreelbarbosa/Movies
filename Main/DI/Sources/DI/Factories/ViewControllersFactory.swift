@@ -25,10 +25,10 @@ class ViewControllersFactory: DependencyFactory {
 
 extension ViewControllersFactory: MoviesGridVCFactory {
 
-    func makeViewController() -> UIViewController {
-        let view = UIViewController()
-        view.view.backgroundColor = .blue
-        view.tabBarItem.title = "TheMoviesDB"
+    func makeMoviesGridViewController() -> MoviesGridViewController {
+        let presenter = resolver.resolveSafe(MoviesGridPresenter.self)
+        let view = MoviesGridViewController(presenter: presenter)
+        presenter.attach(view: view)
         return view
     }
 }
@@ -38,9 +38,6 @@ extension ViewControllersFactory: FavoriteMoviesVCFactory {
     func makeFMViewController() -> UIViewController {
         let view = UIViewController()
         view.view.backgroundColor = .red
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            view.navigationController?.tabBarItem.title = "Favorite"
-        }
         return view
     }
 }

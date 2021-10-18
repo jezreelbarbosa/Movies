@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 import Domain
-import MoviesGrid
+import FavoriteMovies
+
+// MARK: - Protocols
 
 public protocol FavoriteMoviesCoordinatorDelegate: CoordinatorDelegate {}
 
@@ -16,6 +18,8 @@ public protocol FavoriteMoviesVCFactory: DependencyFactory {
 
     func makeFMViewController() -> UIViewController
 }
+
+// MARK: - Coordinator
 
 public class FavoriteMoviesCoordinator: NavigationCoordinator {
 
@@ -45,4 +49,10 @@ public class FavoriteMoviesCoordinator: NavigationCoordinator {
         let viewController = viewControllersFactory.makeFMViewController()
         navigationController.pushViewController(viewController, animated: true)
     }
+}
+
+// MARK: - Coordinating
+
+extension FavoriteMoviesCoordinator {
+
 }
