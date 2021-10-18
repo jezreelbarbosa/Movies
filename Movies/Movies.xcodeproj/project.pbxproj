@@ -20,6 +20,19 @@
 		0DDC2E6C2703EAA0002CCBA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDC2E6B2703EAA0002CCBA5 /* AppDelegate.swift */; };
 		0DDC2E752703EAA3002CCBA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DDC2E742703EAA3002CCBA5 /* Assets.xcassets */; };
 		0DDC2E782703EAA3002CCBA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DDC2E762703EAA3002CCBA5 /* LaunchScreen.storyboard */; };
+		E79AF391271DA978000C6C39 /* SourceSansPro-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF384271DA978000C6C39 /* SourceSansPro-BlackItalic.ttf */; };
+		E79AF392271DA978000C6C39 /* SourceSansPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF385271DA978000C6C39 /* SourceSansPro-SemiBoldItalic.ttf */; };
+		E79AF393271DA978000C6C39 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF386271DA978000C6C39 /* SourceSansPro-Regular.ttf */; };
+		E79AF394271DA978000C6C39 /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF387271DA978000C6C39 /* SourceSansPro-Bold.ttf */; };
+		E79AF395271DA978000C6C39 /* SourceSansPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF388271DA978000C6C39 /* SourceSansPro-LightItalic.ttf */; };
+		E79AF396271DA978000C6C39 /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF389271DA978000C6C39 /* SourceSansPro-Light.ttf */; };
+		E79AF397271DA978000C6C39 /* SourceSansPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF38A271DA978000C6C39 /* SourceSansPro-Black.ttf */; };
+		E79AF398271DA978000C6C39 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = E79AF38B271DA978000C6C39 /* OFL.txt */; };
+		E79AF399271DA978000C6C39 /* SourceSansPro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF38C271DA978000C6C39 /* SourceSansPro-ExtraLight.ttf */; };
+		E79AF39A271DA978000C6C39 /* SourceSansPro-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF38D271DA978000C6C39 /* SourceSansPro-BoldItalic.ttf */; };
+		E79AF39B271DA978000C6C39 /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF38E271DA978000C6C39 /* SourceSansPro-SemiBold.ttf */; };
+		E79AF39C271DA978000C6C39 /* SourceSansPro-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF38F271DA978000C6C39 /* SourceSansPro-ExtraLightItalic.ttf */; };
+		E79AF39D271DA978000C6C39 /* SourceSansPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79AF390271DA978000C6C39 /* SourceSansPro-Italic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +41,19 @@
 		0DDC2E742703EAA3002CCBA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DDC2E772703EAA3002CCBA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DDC2E792703EAA3002CCBA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E79AF384271DA978000C6C39 /* SourceSansPro-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-BlackItalic.ttf"; sourceTree = "<group>"; };
+		E79AF385271DA978000C6C39 /* SourceSansPro-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		E79AF386271DA978000C6C39 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		E79AF387271DA978000C6C39 /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.ttf"; sourceTree = "<group>"; };
+		E79AF388271DA978000C6C39 /* SourceSansPro-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-LightItalic.ttf"; sourceTree = "<group>"; };
+		E79AF389271DA978000C6C39 /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
+		E79AF38A271DA978000C6C39 /* SourceSansPro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.ttf"; sourceTree = "<group>"; };
+		E79AF38B271DA978000C6C39 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		E79AF38C271DA978000C6C39 /* SourceSansPro-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-ExtraLight.ttf"; sourceTree = "<group>"; };
+		E79AF38D271DA978000C6C39 /* SourceSansPro-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-BoldItalic.ttf"; sourceTree = "<group>"; };
+		E79AF38E271DA978000C6C39 /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; };
+		E79AF38F271DA978000C6C39 /* SourceSansPro-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		E79AF390271DA978000C6C39 /* SourceSansPro-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Italic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,12 +104,41 @@
 		0DDC2E6A2703EAA0002CCBA5 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				E79AF382271DA958000C6C39 /* Resources */,
 				0DDC2E6B2703EAA0002CCBA5 /* AppDelegate.swift */,
-				0DDC2E742703EAA3002CCBA5 /* Assets.xcassets */,
 				0DDC2E762703EAA3002CCBA5 /* LaunchScreen.storyboard */,
 				0DDC2E792703EAA3002CCBA5 /* Info.plist */,
 			);
 			path = Movies;
+			sourceTree = "<group>";
+		};
+		E79AF382271DA958000C6C39 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E79AF383271DA978000C6C39 /* Source Sans Pro */,
+				0DDC2E742703EAA3002CCBA5 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E79AF383271DA978000C6C39 /* Source Sans Pro */ = {
+			isa = PBXGroup;
+			children = (
+				E79AF38B271DA978000C6C39 /* OFL.txt */,
+				E79AF38C271DA978000C6C39 /* SourceSansPro-ExtraLight.ttf */,
+				E79AF38F271DA978000C6C39 /* SourceSansPro-ExtraLightItalic.ttf */,
+				E79AF389271DA978000C6C39 /* SourceSansPro-Light.ttf */,
+				E79AF388271DA978000C6C39 /* SourceSansPro-LightItalic.ttf */,
+				E79AF386271DA978000C6C39 /* SourceSansPro-Regular.ttf */,
+				E79AF390271DA978000C6C39 /* SourceSansPro-Italic.ttf */,
+				E79AF38E271DA978000C6C39 /* SourceSansPro-SemiBold.ttf */,
+				E79AF385271DA978000C6C39 /* SourceSansPro-SemiBoldItalic.ttf */,
+				E79AF387271DA978000C6C39 /* SourceSansPro-Bold.ttf */,
+				E79AF38D271DA978000C6C39 /* SourceSansPro-BoldItalic.ttf */,
+				E79AF38A271DA978000C6C39 /* SourceSansPro-Black.ttf */,
+				E79AF384271DA978000C6C39 /* SourceSansPro-BlackItalic.ttf */,
+			);
+			path = "Source Sans Pro";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +215,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E79AF398271DA978000C6C39 /* OFL.txt in Resources */,
+				E79AF395271DA978000C6C39 /* SourceSansPro-LightItalic.ttf in Resources */,
+				E79AF393271DA978000C6C39 /* SourceSansPro-Regular.ttf in Resources */,
+				E79AF391271DA978000C6C39 /* SourceSansPro-BlackItalic.ttf in Resources */,
+				E79AF39D271DA978000C6C39 /* SourceSansPro-Italic.ttf in Resources */,
 				0DDC2E782703EAA3002CCBA5 /* LaunchScreen.storyboard in Resources */,
+				E79AF392271DA978000C6C39 /* SourceSansPro-SemiBoldItalic.ttf in Resources */,
 				0DDC2E752703EAA3002CCBA5 /* Assets.xcassets in Resources */,
+				E79AF39A271DA978000C6C39 /* SourceSansPro-BoldItalic.ttf in Resources */,
+				E79AF39C271DA978000C6C39 /* SourceSansPro-ExtraLightItalic.ttf in Resources */,
+				E79AF394271DA978000C6C39 /* SourceSansPro-Bold.ttf in Resources */,
+				E79AF399271DA978000C6C39 /* SourceSansPro-ExtraLight.ttf in Resources */,
+				E79AF39B271DA978000C6C39 /* SourceSansPro-SemiBold.ttf in Resources */,
+				E79AF397271DA978000C6C39 /* SourceSansPro-Black.ttf in Resources */,
+				E79AF396271DA978000C6C39 /* SourceSansPro-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +405,7 @@
 				DEVELOPMENT_TEAM = XCSQ883CT6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Movies/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TMDB;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -366,6 +435,7 @@
 				DEVELOPMENT_TEAM = XCSQ883CT6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Movies/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TMDB;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
