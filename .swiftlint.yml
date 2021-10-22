@@ -3,6 +3,7 @@ disabled_rules:
 - void_return
 - nesting
 
+cyclomatic_complexity: 12
 file_length: 550
 line_length: 150
 
@@ -16,6 +17,7 @@ identifier_name:
     warning: 3
   excluded:
     - s
+    - x
     - id
 
 force_cast: error

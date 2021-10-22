@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.4
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -14,6 +14,9 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
+        .package(name: "Common", path: "../Core/Common"),
+        .package(name: "Domain", path: "../Core/Domain"),
+        .package(name: "AppData", path: "../Core/AppData"),
         .package(name: "AppStorage", path: "../Core/AppStorage"),
         .package(name: "Networking", path: "../Core/Networking"),
         .package(name: "AppNavigation", path: "../Main/AppNavigation")
@@ -23,7 +26,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DI",
-            dependencies: ["AppStorage", "Networking", "AppNavigation"]),
+            dependencies: ["Common", "Domain", "AppData", "AppStorage", "Networking", "AppNavigation"]),
         .testTarget(
             name: "DITests",
             dependencies: ["DI"])
