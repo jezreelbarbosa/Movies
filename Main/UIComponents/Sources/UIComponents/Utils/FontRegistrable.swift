@@ -107,7 +107,7 @@ public extension FontRegistrable where RawValue == String {
     }
 }
 
-private extension FontRegistrable where RawValue == String  {
+private extension FontRegistrable where RawValue == String {
 
     static func register(fileNameString: String, type: String, bundle: Bundle) {
         guard let resourceBundleURL = bundle.url(forResource: fileNameString, withExtension: type),
