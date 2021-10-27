@@ -14,21 +14,29 @@ public class MoviesGridView: UICodeView {
 
     // Properties
 
+    let tableView = UITableView()
+
     // Lifecycle
 
     public override func initSubviews() {
-
+        subviews(
+            tableView
+        )
     }
 
     public override func initLayout() {
-
+        tableView.fillContainer()
     }
 
     public override func initStyle() {
         style { s in
-            s.backgroundColor = .blue
+            s.backgroundColor = Colors.backgroundColor
+        }
+        tableView.style { (s) in
+            s.backgroundColor = .clear
+            s.separatorStyle = .none
+            s.contentInset.top = 4
+            s.contentInset.bottom = 4
         }
     }
-
-    // Functions
 }

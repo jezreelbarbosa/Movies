@@ -27,9 +27,9 @@ extension ViewControllersFactory: MoviesGridVCFactory {
 
     func makeMoviesGridViewController() -> MoviesGridViewController {
         let presenter = resolver.resolveSafe(MoviesGridPresenter.self)
-        let view = MoviesGridViewController(presenter: presenter)
-        presenter.attach(view: view)
-        return view
+        let controller = MoviesGridViewController(presenter: presenter)
+        presenter.attach(view: controller)
+        return controller
     }
 }
 

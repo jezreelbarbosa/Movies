@@ -28,14 +28,16 @@ public class CirclePercentView: UICodeView, ContentSizeObserver {
     public var cirleColor: UIColor = .clear
     public var arcBackgroundNilColor: UIColor = .clear
 
-    public var fontSize: CGFloat = 15 {
-        didSet {
-            valueLabel.font = SourceSansPro.semiBold.font(.subheadline, size: fontSize)
-            percentLabel.font = SourceSansPro.regular.font(.subheadline, size: fontSize/3)
-        }
+    public var fontSize: CGFloat = 14 {
+        didSet { updateFonts() }
+    }
+    public var fontMaxSize: CGFloat? {
+        didSet { updateFonts() }
     }
 
     public var notificationTokens: [NotificationToken] = []
+
+    private weak var timer: Timer?
 
     // Views
 
@@ -66,7 +68,8 @@ public class CirclePercentView: UICodeView, ContentSizeObserver {
             s.axis = .horizontal
         }
         valueLabel.style { s in
-            s.font = SourceSansPro.semiBold.font(.subheadline, size: fontSize)
+            s.font = Rubik.regular.font(.subheadline, size: fontSize)
+            s.textColor = Palette.White.white
             s.textAlignment = .center
             s.lineBreakMode = .byClipping
             s.minimumScaleFactor = 0.1
@@ -75,7 +78,8 @@ public class CirclePercentView: UICodeView, ContentSizeObserver {
         }
         percentLabel.style { s in
             s.text = "%"
-            s.font = SourceSansPro.regular.font(.subheadline, size: fontSize/3)
+            s.font = Rubik.regular.font(.subheadline, size: fontSize/3)
+            s.textColor = Palette.White.white
             s.textAlignment = .center
             s.lineBreakMode = .byClipping
             s.minimumScaleFactor = 0.1
@@ -129,7 +133,7 @@ public class CirclePercentView: UICodeView, ContentSizeObserver {
         context.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
         context.strokePath()
 
-        valueLabel.text = String(format: "%02.0f", value * 100)
+        valueLabel.text = String(format: "%2.0f", value * 100)
         percentView.isHidden = false
         percentLabel.topConstraint?.constant = valueLabel.font.capAscentHeight - percentLabel.font.capAscentHeight
     }
@@ -146,18 +150,28 @@ public class CirclePercentView: UICodeView, ContentSizeObserver {
             value = newValue
             return
         }
+        let frameTime: TimeInterval = 0.033
         var currentDuration: TimeInterval = 0
-        let timer = Timer(timeInterval: 0.033, repeats: true) { [self] timer in
-            currentDuration += 0.033
+
+        let timer = Timer(timeInterval: frameTime, repeats: true) { [self] timer in
+            currentDuration += frameTime
             let x = CGFloat(currentDuration / duration)
             value = sqrt((2 - x) * x) * newValue
+
             if currentDuration >= duration {
                 value = newValue
                 timer.invalidate()
                 completion?()
             }
         }
-        RunLoop.current.add(timer, forMode: .default)
+        self.timer?.invalidate()
+        self.timer = timer
+        RunLoop.current.add(timer, forMode: .common)
+    }
+
+    private func updateFonts() {
+        valueLabel.font = Rubik.regular.font(.subheadline, size: fontSize, maximumSize: fontMaxSize)
+        percentLabel.font = Rubik.regular.font(.subheadline, size: fontSize/3.0, maximumSize: fontMaxSize/3.0)
     }
 }
 
@@ -165,14 +179,16 @@ public extension CirclePercentView {
 
     func setTMDBStyle() {
         fontSize = 14
+        fontMaxSize = 14 * 1.6
         addContentSizeObserver { [unowned self] _ in
-            arcWidth = UIFontMetrics.default.scaledValue(for: 2)
-            arcSpam = UIFontMetrics.default.scaledValue(for: 2)
+            arcWidth = min(UIFontMetrics.default.scaledValue(for: 2), 2 * 1.6)
         }
+        arcSpam = 2
         arcColorValues = [0.4, 0.7, 1.01]
         arcBackgroundColors = [Palette.Purple.tyrionPurple, Palette.Yellow.oliveDrab, Palette.Green.britishRacingGreen]
         arcForegroundColors = [Palette.Red.ruby, Palette.Yellow.pear, Palette.Green.emerald]
         cirleColor = Palette.Black.richBlackFOGRA
         arcBackgroundNilColor = Palette.Gray.dimGray
+        backgroundColor = .clear
     }
 }

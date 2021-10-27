@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit.UIImage
+import UIKit
 
 public protocol AssetImage: RawRepresentable {
 

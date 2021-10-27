@@ -16,6 +16,8 @@ public final class Palette {
 
         /// #FFFFFF
         public static let white = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        /// #E3E3E3
+        public static let platinum = #colorLiteral(red: 0.8901960784, green: 0.8901960784, blue: 0.8901960784, alpha: 1)
     }
 
     /// Gray  🌫
@@ -23,6 +25,10 @@ public final class Palette {
 
         /// #666666
         public static let dimGray = #colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
+        /// #969694
+        public static let spanishGray = #colorLiteral(red: 0.5882352941, green: 0.5882352941, blue: 0.5803921569, alpha: 1)
+        /// #383D3F
+        public static let onyx = #colorLiteral(red: 0.2196078431, green: 0.2392156863, blue: 0.2470588235, alpha: 1)
     }
 
     /// Black ⬛️
@@ -32,6 +38,8 @@ public final class Palette {
         public static let black = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         /// #06171A
         public static let richBlackFOGRA = #colorLiteral(red: 0.02352941176, green: 0.09019607843, blue: 0.1019607843, alpha: 1)
+        /// #181A1B
+        public static let eerieBlack = #colorLiteral(red: 0.09411764706, green: 0.1019607843, blue: 0.1058823529, alpha: 1)
     }
 
     /// Red 🟥
