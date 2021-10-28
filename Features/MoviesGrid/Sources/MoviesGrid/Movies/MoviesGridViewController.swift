@@ -11,8 +11,9 @@ import UIComponents
 
 // MARK: - Protocols
 
-public protocol MoviesGridPresenting: CodePresenting {
+public protocol MoviesGridPresenting {
 
+    func fetchPopularMovies()
 }
 
 // MARK: - ViewController
@@ -21,15 +22,7 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
 
     // Properties
 
-    var movies: [MovieGridViewModel] = [
-        MovieGridViewModel(image: nil, percent: 0.70, title: "Venom, Let There Be Carnage", date: "Sep 30, 2021"),
-        MovieGridViewModel(image: nil, percent: 0.81, title: "Dune", date: "Sep 15, 2021"),
-        MovieGridViewModel(image: nil, percent: 0.75, title: "Halloween Kills", date: "Oct 14, 2021"),
-        MovieGridViewModel(image: nil, percent: 0.78, title: "Free Guy", date: "Aug 11, 2021"),
-        MovieGridViewModel(image: nil, percent: 0.68, title: "Venom", date: "Sep 18, 2018"),
-        MovieGridViewModel(image: nil, percent: 0.84, title: "The Seven Deadly Sins: Cursed by Light", date: "Aug 11, 2021"),
-        MovieGridViewModel(image: nil, percent: 0.76, title: "The Addams Family 2", date: "Oct 01, 2018")
-    ]
+    var movies: [MovieGridViewModel] = []
 
     // Lifecycle
 
@@ -39,7 +32,7 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
     }
 
     public override func setupPresenter() {
-
+        presenter.fetchPopularMovies()
     }
 
     // Functions
@@ -68,7 +61,10 @@ extension MoviesGridViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MoviesGridViewController: MoviesGridViewable {
 
-    public func show(movies: [String]) {
-
+    public func show(movies: [MovieGridViewModel]) {
+        self.movies = movies
+        DispatchQueue.main.async {
+            self.mainView.tableView.reloadData()
+        }
     }
 }

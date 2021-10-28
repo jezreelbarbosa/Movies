@@ -71,11 +71,10 @@ class MovieView: UICodeView {
 
     @discardableResult
     func fill(model: MovieGridViewModel) -> Self {
-        posterImageView.image = model.image
         posterImageView.backgroundColor = .dynamic(any: .gray, dark: .black)
         titleLabel.text = model.title
         dateLabel.text = model.date
-        percentageView.animate(newValue: model.percent, withDuration: 3)
+        percentageView.animate(newValue: model.percent, withDuration: 2)
         return self
     }
 }

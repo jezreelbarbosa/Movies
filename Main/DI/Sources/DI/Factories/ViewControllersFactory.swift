@@ -26,7 +26,7 @@ class ViewControllersFactory: DependencyFactory {
 extension ViewControllersFactory: MoviesGridVCFactory {
 
     func makeMoviesGridViewController() -> MoviesGridViewController {
-        let presenter = resolver.resolveSafe(MoviesGridPresenter.self)
+        let presenter = resolver.resolveSafe(MoviesGridPresenter<MoviesGridViewController>.self)
         let controller = MoviesGridViewController(presenter: presenter)
         presenter.attach(view: controller)
         return controller

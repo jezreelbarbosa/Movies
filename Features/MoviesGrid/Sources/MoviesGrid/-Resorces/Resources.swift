@@ -16,3 +16,20 @@ struct Colors {
     static let labelDateColor = UIColor.dynamic(any: Palette.Gray.onyx, dark: Palette.Gray.spanishGray)
     static let borderColor = UIColor.dynamic(any: Palette.White.platinum, dark: Palette.Gray.onyx)
 }
+
+struct Texts {
+
+}
+
+struct Configs {
+
+    static let locale = LocalizedString()
+        .enUS("en-US")
+        .ptBR("pt-BR")
+        .localizedText
+
+    static let dateFormat = LocalizedString()
+        .enUS("MMM dd, yyyy")
+        .ptBR("dd/MM/yyyy")
+        .localizedText
+}

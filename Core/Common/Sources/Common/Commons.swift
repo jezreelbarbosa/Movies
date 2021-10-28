@@ -9,7 +9,9 @@ import Foundation
 
 public typealias VoidCompletion = () -> Void
 
-public typealias ResultCompletion<T> = (Result<T, Error>) -> Void
+public typealias ResultCompletion<T, U: Error> = (Result<T, U>) -> Void
+
+public typealias ResultCompletionSuccess<T> = (Result<T, Error>) -> Void
 
 public enum TestMockError: Error {
 

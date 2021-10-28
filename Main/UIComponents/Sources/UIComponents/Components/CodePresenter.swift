@@ -9,7 +9,7 @@ import Foundation
 
 open class CodePresenter<T: AnyObject> {
 
-    public private(set) weak var view: T!
+    public private(set) unowned var view: T!
 
     public init() {}
 
