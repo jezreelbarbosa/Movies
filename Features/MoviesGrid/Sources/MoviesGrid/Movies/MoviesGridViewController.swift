@@ -55,6 +55,13 @@ extension MoviesGridViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return cell
     }
+
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == movies.halfCountUpRounded - 1 {
+            mainView.table(isLoading: true)
+            presenter.fetchPopularMovies()
+        }
+    }
 }
 
 // MARK: - Viewable
@@ -63,6 +70,7 @@ extension MoviesGridViewController: MoviesGridViewable {
 
     public func show(movies: [MovieGridViewModel]) {
         self.movies = movies
+        mainView.table(isLoading: false)
         DispatchQueue.main.async {
             self.mainView.tableView.reloadData()
         }

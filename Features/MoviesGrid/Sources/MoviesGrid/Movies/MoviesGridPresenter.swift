@@ -28,6 +28,7 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
     // Properties
 
     var moviesSet: Set<MovieGridViewModel> = []
+    var popularPage: Int = 1
 
     var popularMovies: [MovieGridViewModel] = []
     var popularIndex: Int = 1
@@ -47,10 +48,8 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
     func updateMovies(movies: [MovieGridViewModel]) {
         for movie in movies {
             let (_, member) = moviesSet.insert(movie)
-            if member.popularIndex.isNil {
-                member.popularIndex = popularIndex
-                popularIndex += 1
-            }
+            member.popularIndex = popularIndex
+            popularIndex += 1
         }
         popularMovies = moviesSet.filter({ $0.popularIndex.isNotNil }).sorted(by: { $0.popularIndex < $1.popularIndex })
     }
@@ -61,9 +60,10 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
 extension MoviesGridPresenter: MoviesGridPresenting {
 
     public func fetchPopularMovies() {
-        popularMoviesPageUseCase.execute(page: 1, locale: Configs.locale) { [weak self] result in
+        popularMoviesPageUseCase.execute(page: popularPage, locale: Configs.locale) { [weak self] result in
             guard let self = self else { return }
             result.successHandler { movies in
+                self.popularPage += 1
                 self.updateMovies(movies: movies.map({ MovieGridViewModel(movie: $0) }))
                 self.view.show(movies: self.popularMovies)
             }

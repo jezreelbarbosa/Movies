@@ -74,7 +74,8 @@ class MovieView: UICodeView {
         posterImageView.backgroundColor = .dynamic(any: .gray, dark: .black)
         titleLabel.text = model.title
         dateLabel.text = model.date
-        percentageView.animate(newValue: model.percent, withDuration: 2)
+//        percentageView.value = model.percent
+        percentageView.animate(newValue: model.percent, withDuration: 1.6)
         return self
     }
 }

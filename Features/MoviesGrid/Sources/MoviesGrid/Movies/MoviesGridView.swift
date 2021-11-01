@@ -15,6 +15,7 @@ public class MoviesGridView: UICodeView {
     // Properties
 
     let tableView = UITableView()
+    let loadingView = UIActivityIndicatorView()
 
     // Lifecycle
 
@@ -26,6 +27,7 @@ public class MoviesGridView: UICodeView {
 
     public override func initLayout() {
         tableView.fillContainer()
+        loadingView.frame = CGRect(origin: .zero, size: CGSize(width: 32, height: 32))
     }
 
     public override func initStyle() {
@@ -37,6 +39,18 @@ public class MoviesGridView: UICodeView {
             s.separatorStyle = .none
             s.contentInset.top = 4
             s.contentInset.bottom = 4
+        }
+    }
+
+    // Functions
+
+    func table(isLoading: Bool) {
+        DispatchQueue.main.async { [self] in
+            isLoading ? loadingView.startAnimating() : loadingView.stopAnimating()
+            tableView.tableFooterView = isLoading ? loadingView : nil
+            UIView.animate(withDuration: 0.4) {
+                tableView.contentOffset.y -= isLoading ? 0 : 16
+            }
         }
     }
 }
