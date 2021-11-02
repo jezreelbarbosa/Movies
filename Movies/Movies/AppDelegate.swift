@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Methods
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        LocalizedString.appLocale = Locale(identifier: "en_US")
+        LocalizedString.appLocale = Locale(identifier: "pt_BR")
         window = UIWindow(frame: UIScreen.main.bounds)
         dependencyInjector = DependencyInjector(window: window)
         dependencyInjector.build { [unowned self] assembler, appCoordinator in

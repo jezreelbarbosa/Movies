@@ -11,6 +11,8 @@ import Domain
 
 public class MovieGridViewModel {
 
+    static let didDownloadPosterImageNN = Notification.Name(rawValue: "com.jezreel.movies.didDownloadPosterImageNN")
+
     // Model
 
     let movie: MovieResponse
@@ -25,6 +27,8 @@ public class MovieGridViewModel {
 
     var popularIndex: Int?
 
+    var posterImage: UIImage?
+
     var percent: CGFloat {
         movie.voteAverage
     }
@@ -37,8 +41,6 @@ public class MovieGridViewModel {
         guard let releaseDate = movie.releaseDate else { return "--" }
         return DateFormatter(Configs.dateFormat).string(from: releaseDate)
     }
-
-    // Functions
 }
 
 extension MovieGridViewModel: Equatable, Hashable {

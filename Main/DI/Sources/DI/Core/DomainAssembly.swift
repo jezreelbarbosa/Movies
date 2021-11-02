@@ -13,5 +13,6 @@ class DomainAssembly: Assembly {
 
     func assemble(container: Container) {
         container.autoregister(PopularMoviesPageUseCaseProtocol.self, initializer: PopularMoviesPageUseCase.init)
+        container.autoregister(GetPosterImageUseCaseProtocol.self, initializer: GetPosterImageUseCase.init)
     }
 }

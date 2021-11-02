@@ -16,7 +16,7 @@ public class TmdbApiRemoteDataSource {
 
 extension TmdbApiRemoteDataSource: Domain.TmdbApiRemoteDataSource {
 
-    public func execute(page: Int, locale: String, completion: @escaping ResultCompletion<[MovieResponse], PopularMoviesPageError>) {
+    public func getPopularMovies(page: Int, locale: String, completion: @escaping ResultCompletion<[MovieResponse], PopularMoviesPageError>) {
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = .reloadIgnoringLocalCacheData
         config.urlCache = nil
@@ -47,5 +47,17 @@ extension TmdbApiRemoteDataSource: Domain.TmdbApiRemoteDataSource {
         } catch let error {
             completion(.failure(.jsonError(error)))
         }
+    }
+
+    public func getPosterImage(path: String, completion: @escaping ResultCompletion<Data, GetPosterImageError>) {
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w342" + path) else { return }
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                completion(.failure(.requestError(error)))
+                return
+            }
+            completion(.success(data))
+        }
+        task.resume()
     }
 }

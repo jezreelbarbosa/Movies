@@ -35,6 +35,6 @@ public class PopularMoviesPageUseCase {
 extension PopularMoviesPageUseCase: PopularMoviesPageUseCaseProtocol {
 
     public func execute(page: Int, locale: String, completion: @escaping ResultCompletion<[MovieResponse], PopularMoviesPageError>) {
-        remote.execute(page: page, locale: locale, completion: completion)
+        remote.getPopularMovies(page: page, locale: locale, completion: completion)
     }
 }

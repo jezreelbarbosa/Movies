@@ -10,5 +10,6 @@ import Common
 
 public protocol TmdbApiRemoteDataSource {
 
-    func execute(page: Int, locale: String, completion: @escaping ResultCompletion<[MovieResponse], PopularMoviesPageError>)
+    func getPopularMovies(page: Int, locale: String, completion: @escaping ResultCompletion<[MovieResponse], PopularMoviesPageError>)
+    func getPosterImage(path: String, completion: @escaping ResultCompletion<Data, GetPosterImageError>)
 }

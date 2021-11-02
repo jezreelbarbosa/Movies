@@ -10,7 +10,7 @@ import UIKit
 import Stevia
 import UIComponents
 
-class MovieView: UICodeView {
+class MovieView: UICodeView, NotificationTokenObserver {
 
     // Properties
 
@@ -18,6 +18,10 @@ class MovieView: UICodeView {
     let percentageView = CirclePercentView()
     let titleLabel = UILabel()
     let dateLabel = UILabel()
+
+    weak var movie: MovieGridViewModel?
+
+    var notificationTokens: [NotificationToken] = []
 
     // Lifecycle
 
@@ -33,11 +37,11 @@ class MovieView: UICodeView {
     public override func initLayout() {
         posterImageView.fillHorizontally().top(0)
         posterImageView.Height == posterImageView.Width * 1.5
-        percentageView.size(42).leading(16).CenterY == posterImageView.Bottom
+        percentageView.size(42).leading(8).CenterY == posterImageView.Bottom
         percentageView.heightConstraint?.scaledConstant(for: .subheadline, maxValue: 42 * 1.6)
         percentageView.widthConstraint?.scaledConstant(for: .subheadline, maxValue: 42 * 1.6)
-        titleLabel.fillHorizontally(padding: 16).Top == percentageView.Bottom + 8
-        dateLabel.fillHorizontally(padding: 16).bottom(>=16).Top == titleLabel.Bottom
+        titleLabel.fillHorizontally(padding: 8).Top == percentageView.Bottom + 8
+        dateLabel.fillHorizontally(padding: 8).bottom(>=8).Top == titleLabel.Bottom
     }
 
     public override func initStyle() {
@@ -47,6 +51,9 @@ class MovieView: UICodeView {
             s.layer.borderWidth = 1
             s.layer.borderColor = Colors.borderColor.cgColor
             s.layer.masksToBounds = true
+        }
+        posterImageView.style { s in
+            s.backgroundColor = .dynamic(any: .gray, dark: .black)
         }
         percentageView.style { s in
             s.setTMDBStyle()
@@ -70,12 +77,26 @@ class MovieView: UICodeView {
     // Functions
 
     @discardableResult
-    func fill(model: MovieGridViewModel) -> Self {
-        posterImageView.backgroundColor = .dynamic(any: .gray, dark: .black)
-        titleLabel.text = model.title
-        dateLabel.text = model.date
-//        percentageView.value = model.percent
-        percentageView.animate(newValue: model.percent, withDuration: 1.6)
+    func fill(movie: MovieGridViewModel) -> Self {
+        self.movie = movie
+        titleLabel.text = movie.title
+        dateLabel.text = movie.date
+        percentageView.animate(newValue: movie.percent, withDuration: 1.6)
+
+        let name = MovieGridViewModel.didDownloadPosterImageNN
+        addObserver(name: name, object: movie, queue: .main) { [weak self] _ in
+            self?.posterImageView.image = self?.movie?.posterImage
+        }
+        posterImageView.image = movie.posterImage
+
         return self
+    }
+
+    func prepareForReuse() {
+        posterImageView.image = nil
+        titleLabel.text = nil
+        dateLabel.text = nil
+        percentageView.value = 0
+        notificationTokens.removeAll()
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 import Domain
 import UIComponents
 import Common
+import UIKit
 
 // MARK: - Protocols
 
@@ -35,12 +36,16 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
 
     unowned let coordinator: MoviesGridCoordinating
     let popularMoviesPageUseCase: PopularMoviesPageUseCaseProtocol
+    let getPosterImageUseCase: GetPosterImageUseCaseProtocol
 
     // Lifecycle
 
-    public init(coordinator: MoviesGridCoordinating, popularMoviesPageUseCase: PopularMoviesPageUseCaseProtocol) {
+    public init(coordinator: MoviesGridCoordinating,
+                popularMoviesPageUseCase: PopularMoviesPageUseCaseProtocol,
+                getPosterImageUseCase: GetPosterImageUseCaseProtocol) {
         self.coordinator = coordinator
         self.popularMoviesPageUseCase = popularMoviesPageUseCase
+        self.getPosterImageUseCase = getPosterImageUseCase
     }
 
     // Functions
@@ -50,8 +55,19 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
             let (_, member) = moviesSet.insert(movie)
             member.popularIndex = popularIndex
             popularIndex += 1
+            getPosterImage(movie: movie)
         }
         popularMovies = moviesSet.filter({ $0.popularIndex.isNotNil }).sorted(by: { $0.popularIndex < $1.popularIndex })
+    }
+
+    func getPosterImage(movie: MovieGridViewModel) {
+        guard let path = movie.movie.posterPath else { return }
+        weak var weakMovie = movie
+        getPosterImageUseCase.execute(path: path) { result in
+            guard let data = result.success else { return }
+            weakMovie?.posterImage = UIImage(data: data)
+            NotificationCenter.default.post(name: MovieGridViewModel.didDownloadPosterImageNN, object: weakMovie)
+        }
     }
 }
 

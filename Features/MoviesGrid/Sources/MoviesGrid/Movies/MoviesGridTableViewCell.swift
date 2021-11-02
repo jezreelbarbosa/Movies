@@ -38,13 +38,20 @@ public class MoviesGridTableViewCell: UICodeTableViewCell {
         }
     }
 
+    // Overrides
+
+    public override func prepareForReuse() {
+        leadingMovieView.prepareForReuse()
+        trailingMovieView.prepareForReuse()
+    }
+
     // Functions
 
     func fill(first: MovieGridViewModel, second: MovieGridViewModel?) {
-        leadingMovieView.fill(model: first)
+        leadingMovieView.fill(movie: first)
         trailingMovieView.isHidden = second.isNil
         if let second = second {
-            trailingMovieView.fill(model: second)
+            trailingMovieView.fill(movie: second)
         }
     }
 }
