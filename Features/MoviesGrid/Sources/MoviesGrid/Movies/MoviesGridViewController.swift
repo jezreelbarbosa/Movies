@@ -29,6 +29,7 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
     public override func setupView() {
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
+        title = Texts.MoviesGrid.moviesTitle
     }
 
     public override func setupPresenter() {

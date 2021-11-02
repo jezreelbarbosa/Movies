@@ -9,6 +9,11 @@ import Foundation
 import UIComponents
 import UIKit
 
+enum Assets: String, AssetImage {
+
+    case film
+}
+
 struct Colors {
 
     static let backgroundColor = UIColor.dynamic(any: Palette.White.white, dark: Palette.Black.eerieBlack)
@@ -19,6 +24,13 @@ struct Colors {
 
 struct Texts {
 
+    struct MoviesGrid {
+
+        static let moviesTitle = LocalizedString()
+            .enUS("Movies")
+            .ptBR("Filmes")
+            .localizedText
+    }
 }
 
 struct Configs {

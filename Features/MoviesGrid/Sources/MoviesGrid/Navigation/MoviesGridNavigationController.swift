@@ -12,7 +12,8 @@ public class MoviesGridNavigationController: UINavigationController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarItem.title = "Movies"
+        tabBarItem.title = Texts.MoviesGrid.moviesTitle
+        navigationBar.prefersLargeTitles = true
         if #available(iOS 15.0, *) {
             navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
         }
