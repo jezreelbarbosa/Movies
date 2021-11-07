@@ -22,7 +22,11 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
 
     // Properties
 
-    var movies: [MovieGridViewModel] = []
+    private var isSearching: Bool = false
+    var searchingList: [MovieGridViewModel] = []
+    var popularList: [MovieGridViewModel] = []
+
+    var movies: [MovieGridViewModel] { isSearching ? searchingList : popularList }
 
     // Lifecycle
 
@@ -30,6 +34,7 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
         title = Texts.MoviesGrid.moviesTitle
+        addSearchField()
     }
 
     public override func setupPresenter() {
@@ -38,6 +43,15 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
 
     // Functions
 
+    func addSearchField() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = Texts.MoviesGrid.searchPlaceholder
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        definesPresentationContext = true
+    }
 }
 
 // MARK: - TableView
@@ -60,7 +74,32 @@ extension MoviesGridViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == movies.halfCountUpRounded - 1 {
             mainView.table(isLoading: true)
-            presenter.fetchPopularMovies()
+            if isSearching {
+
+            } else {
+                presenter.fetchPopularMovies()
+            }
+        }
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension MoviesGridViewController: UISearchResultsUpdating {
+
+    public func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text)
+    }
+
+    func filterContentForSearchText(_ searchText: String?) {
+        if let searchText = searchText?.lowercased(), !searchText.isEmpty {
+            isSearching = true
+            searchingList = popularList.filterContains(searchText).prefixSorted(by: searchText)
+        } else {
+            isSearching = false
+        }
+        DispatchQueue.main.async {
+            self.mainView.tableView.reloadData()
         }
     }
 }
@@ -70,7 +109,7 @@ extension MoviesGridViewController: UITableViewDataSource, UITableViewDelegate {
 extension MoviesGridViewController: MoviesGridViewable {
 
     public func show(movies: [MovieGridViewModel]) {
-        self.movies = movies
+        self.popularList = movies
         mainView.table(isLoading: false)
         DispatchQueue.main.async {
             self.mainView.tableView.reloadData()

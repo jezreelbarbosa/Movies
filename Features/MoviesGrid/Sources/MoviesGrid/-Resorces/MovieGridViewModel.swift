@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Domain
+import UIComponents
 
 public class MovieGridViewModel {
 
@@ -50,4 +51,11 @@ extension MovieGridViewModel: Equatable, Hashable {
     }
 
     public func hash(into hasher: inout Hasher) {}
+}
+
+extension MovieGridViewModel: StringSortable {
+
+    public var sortString: String {
+        title
+    }
 }

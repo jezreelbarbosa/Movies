@@ -11,7 +11,7 @@ import UIKit
 
 enum Assets: String, AssetImage {
 
-    case film
+    case filmIcon
 }
 
 struct Colors {
@@ -29,6 +29,11 @@ struct Texts {
         static let moviesTitle = LocalizedString()
             .enUS("Movies")
             .ptBR("Filmes")
+            .localizedText
+
+        static let searchPlaceholder = LocalizedString()
+            .enUS("Search movie")
+            .ptBR("Pesquisar filme")
             .localizedText
     }
 }
