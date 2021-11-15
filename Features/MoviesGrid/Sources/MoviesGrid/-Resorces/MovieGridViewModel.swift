@@ -27,6 +27,7 @@ public class MovieGridViewModel {
     // Properties
 
     var popularIndex: Int?
+    var searchIndex: Int?
 
     var posterImage: UIImage?
 

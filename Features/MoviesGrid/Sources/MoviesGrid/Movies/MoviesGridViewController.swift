@@ -13,7 +13,9 @@ import UIComponents
 
 public protocol MoviesGridPresenting {
 
-    func fetchPopularMovies()
+    func fetchMoreMovies()
+    func searchUpdated(queryText: String)
+    func searchButtonClicked(queryText: String)
 }
 
 // MARK: - ViewController
@@ -22,11 +24,7 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
 
     // Properties
 
-    private var isSearching: Bool = false
-    var searchingList: [MovieGridViewModel] = []
-    var popularList: [MovieGridViewModel] = []
-
-    var movies: [MovieGridViewModel] { isSearching ? searchingList : popularList }
+    var movies: [MovieGridViewModel] = []
 
     // Lifecycle
 
@@ -38,7 +36,7 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
     }
 
     public override func setupPresenter() {
-        presenter.fetchPopularMovies()
+        presenter.fetchMoreMovies()
     }
 
     // Functions
@@ -48,6 +46,7 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = Texts.MoviesGrid.searchPlaceholder
+        searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
         definesPresentationContext = true
@@ -73,34 +72,21 @@ extension MoviesGridViewController: UITableViewDataSource, UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == movies.halfCountUpRounded - 1 {
-            mainView.table(isLoading: true)
-            if isSearching {
-
-            } else {
-                presenter.fetchPopularMovies()
-            }
+            presenter.fetchMoreMovies()
         }
     }
 }
 
 // MARK: - UISearchResultsUpdating
 
-extension MoviesGridViewController: UISearchResultsUpdating {
+extension MoviesGridViewController: UISearchResultsUpdating, UISearchBarDelegate {
 
     public func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text)
+        presenter.searchUpdated(queryText: searchController.searchBar.text.default)
     }
 
-    func filterContentForSearchText(_ searchText: String?) {
-        if let searchText = searchText?.lowercased(), !searchText.isEmpty {
-            isSearching = true
-            searchingList = popularList.filterContains(searchText).prefixSorted(by: searchText)
-        } else {
-            isSearching = false
-        }
-        DispatchQueue.main.async {
-            self.mainView.tableView.reloadData()
-        }
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        presenter.searchButtonClicked(queryText: searchBar.text.default)
     }
 }
 
@@ -109,10 +95,13 @@ extension MoviesGridViewController: UISearchResultsUpdating {
 extension MoviesGridViewController: MoviesGridViewable {
 
     public func show(movies: [MovieGridViewModel]) {
-        self.popularList = movies
-        mainView.table(isLoading: false)
+        self.movies = movies
         DispatchQueue.main.async {
             self.mainView.tableView.reloadData()
         }
+    }
+
+    public func table(isLoading: Bool) {
+        mainView.table(isLoading: isLoading)
     }
 }

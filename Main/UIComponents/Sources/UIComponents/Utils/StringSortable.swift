@@ -35,3 +35,27 @@ public extension Array where Element: StringSortable {
         }
     }
 }
+
+public extension Set where Element: StringSortable {
+
+    func filterContains(_ string: String) -> Self {
+        filter { element in
+            element.sortString.lowercased().contains(string)
+        }
+    }
+
+    func prefixSorted(by string: String) -> [Element] {
+        sorted { lhs, rhs in
+            let aName = lhs.sortString.lowercased()
+            let bName = rhs.sortString.lowercased()
+            let isAEqual = aName.prefix(string.count) == string
+            let isBEqual = bName.prefix(string.count) == string
+
+            if isAEqual == isBEqual {
+                return aName < bName
+            } else {
+                return isAEqual
+            }
+        }
+    }
+}

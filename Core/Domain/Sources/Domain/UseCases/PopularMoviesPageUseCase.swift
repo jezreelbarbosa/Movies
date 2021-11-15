@@ -12,6 +12,7 @@ public enum PopularMoviesPageError: Error {
 
     case requestError(Error?)
     case jsonError(Error)
+    case emptyError
 }
 
 public protocol PopularMoviesPageUseCaseProtocol {

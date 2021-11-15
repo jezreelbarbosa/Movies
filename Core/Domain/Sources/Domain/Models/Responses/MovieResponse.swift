@@ -39,13 +39,13 @@ public struct MovieResponse: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
-        self.title = try container.decode(String.self, forKey: .title)
-        let dateString = try container.decode(String.self, forKey: .releaseDate)
+        self.title = try container.decodeIfPresent(String.self, forKey: .title).default
+        let dateString = try container.decodeIfPresent(String.self, forKey: .releaseDate).default
         self.releaseDate = DateFormatter("yyyy-MM-dd").date(from: dateString)
         self.genreIds = try container.decode([Int].self, forKey: .genreIds)
-        self.overview = try container.decode(String.self, forKey: .overview)
+        self.overview = try container.decodeIfPresent(String.self, forKey: .overview).default
         self.backdropPath = try container.decode(String?.self, forKey: .backdropPath)
         self.posterPath = try container.decode(String?.self, forKey: .posterPath)
-        self.voteAverage = try container.decode(Double.self, forKey: .voteAverage) / 10.0
+        self.voteAverage = try container.decodeIfPresent(Double.self, forKey: .voteAverage).default / 10.0
     }
 }

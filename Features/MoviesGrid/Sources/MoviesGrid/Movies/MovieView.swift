@@ -81,7 +81,8 @@ class MovieView: UICodeView, NotificationTokenObserver {
         self.movie = movie
         titleLabel.text = movie.title
         dateLabel.text = movie.date
-        percentageView.animate(newValue: movie.percent, withDuration: 1.6)
+        percentageView.value = movie.percent
+//        percentageView.animate(newValue: movie.percent, withDuration: 1.6)
 
         let name = MovieGridViewModel.didDownloadPosterImageNN
         addObserver(name: name, object: movie, queue: .main) { [weak self] _ in
