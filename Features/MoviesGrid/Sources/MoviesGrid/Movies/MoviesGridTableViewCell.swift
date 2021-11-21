@@ -12,10 +12,17 @@ import UIComponents
 
 public class MoviesGridTableViewCell: UICodeTableViewCell {
 
+    // Types
+
+    typealias MovieCompletion = (MovieGridViewModel) -> Void
+
     // Properties
 
     let leadingMovieView = MovieView()
     let trailingMovieView = MovieView()
+
+    var leadingMovieTapAction: MovieCompletion?
+    var trailingMovieTapAction: MovieCompletion?
 
     // Lifecycle
 
@@ -53,5 +60,24 @@ public class MoviesGridTableViewCell: UICodeTableViewCell {
         if let second = second {
             trailingMovieView.fill(movie: second)
         }
+    }
+
+    func setActions(firstAction: MovieCompletion?, secondAction: MovieCompletion?) {
+        leadingMovieTapAction = firstAction
+        trailingMovieTapAction = secondAction
+        leadingMovieView.addTarget(self, action: #selector(leadingMovieAction), for: .touchUpInside)
+        trailingMovieView.addTarget(self, action: #selector(trailingMovieAction), for: .touchUpInside)
+    }
+
+    // Action
+
+    @objc private func leadingMovieAction() {
+        guard let movie = leadingMovieView.movie else { return }
+        leadingMovieTapAction?(movie)
+    }
+
+    @objc private func trailingMovieAction() {
+        guard let movie = trailingMovieView.movie else { return }
+        trailingMovieTapAction?(movie)
     }
 }

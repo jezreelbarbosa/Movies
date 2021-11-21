@@ -93,4 +93,10 @@ public extension NSLayoutConstraint {
         firstItem?.addConstraint(codeConstraint)
         return codeConstraint
     }
+
+    @discardableResult
+    func setActive(_ active: Bool = true) -> Self {
+        isActive = active
+        return self
+    }
 }

@@ -41,7 +41,7 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
 
     var isSearching: Bool = false
     var queryText: String = ""
-    var searchConfig: SearchConfigResponse = .onlyOnSearchButton
+    var searchConfig: SearchConfigResponse = .onlyOnSearchTyping
 
     unowned let coordinator: MoviesGridCoordinating
     let popularMoviesPageUseCase: PopularMoviesPageUseCaseProtocol
@@ -162,5 +162,9 @@ extension MoviesGridPresenter: MoviesGridPresenting {
         if searchConfig == .onlyOnSearchButton {
             fetchSearchMovies(query: queryText, isNewQuery: true)
         }
+    }
+
+    public func didTapOnMovie(_ movie: MovieGridViewModel) {
+        print(movie.movie)
     }
 }

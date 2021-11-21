@@ -10,7 +10,7 @@ import UIKit
 import Stevia
 import UIComponents
 
-class MovieView: UICodeView, NotificationTokenObserver {
+class MovieView: UICodeControl, NotificationTokenObserver {
 
     // Properties
 
@@ -35,8 +35,7 @@ class MovieView: UICodeView, NotificationTokenObserver {
     }
 
     public override func initLayout() {
-        posterImageView.fillHorizontally().top(0)
-        posterImageView.Height == posterImageView.Width * 1.5
+        posterImageView.fillHorizontally().top(0).aspectRatio(3/2)
         percentageView.size(42).leading(8).CenterY == posterImageView.Bottom
         percentageView.heightConstraint?.scaledConstant(for: .subheadline, maxValue: 42 * 1.6)
         percentageView.widthConstraint?.scaledConstant(for: .subheadline, maxValue: 42 * 1.6)

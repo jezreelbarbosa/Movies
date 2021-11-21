@@ -16,6 +16,7 @@ public protocol MoviesGridPresenting {
     func fetchMoreMovies()
     func searchUpdated(queryText: String)
     func searchButtonClicked(queryText: String)
+    func didTapOnMovie(_ movie: MovieGridViewModel)
 }
 
 // MARK: - ViewController
@@ -64,9 +65,19 @@ extension MoviesGridViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(MoviesGridTableViewCell.self)
         let index = indexPath.row * 2
+
         if let first = movies.element(at: index) {
-            cell.fill(first: first, second: movies.element(at: index + 1))
+            let second = movies.element(at: index + 1)
+
+            cell.fill(first: first, second: second)
+
+            cell.setActions { [unowned self] movie in
+                presenter.didTapOnMovie(movie)
+            } secondAction: { [unowned self] movie in
+                presenter.didTapOnMovie(movie)
+            }
         }
+
         return cell
     }
 

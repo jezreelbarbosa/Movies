@@ -28,9 +28,11 @@ extension TmdbApiRemoteDataSource: Domain.TmdbApiRemoteDataSource {
         config.urlCache = nil
         let session = URLSession(configuration: config)
         let apiKey = "72ee2814ce7d37165e7a836cc8cf9186"
-        let string = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&language=\(locale)&page=\(page)"
-        guard let url = URL(string: string) else { return }
+        let baseURL = "https://api.themoviedb.org/"
+        let searchURL = "3/movie/popular?api_key=\(apiKey)&language=\(locale)&page=\(page)"
+        let string = (baseURL + searchURL).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed).default
 
+        guard let url = URL(string: string) else { return }
         let task = session.dataTask(with: url) { [self] data, _, error in
             guard let data = data, error == nil
             else {
@@ -52,10 +54,11 @@ extension TmdbApiRemoteDataSource: Domain.TmdbApiRemoteDataSource {
         config.urlCache = nil
         let session = URLSession(configuration: config)
         let apiKey = "72ee2814ce7d37165e7a836cc8cf9186"
-        let string = "https://api.themoviedb.org/3/search/movie" +
-                     "?api_key=\(apiKey)&language=\(request.locale)&query=\(request.query)&page=\(request.page)"
-        guard let url = URL(string: string) else { return }
+        let baseURL = "https://api.themoviedb.org/"
+        let searchURL = "3/search/movie?api_key=\(apiKey)&language=\(request.locale)&query=\(request.query)&page=\(request.page)"
+        let string = (baseURL + searchURL).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed).default
 
+        guard let url = URL(string: string) else { return }
         searchTask = session.dataTask(with: url) { [self] data, _, error in
             guard let data = data, error == nil
             else {
