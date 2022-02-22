@@ -13,6 +13,6 @@ import AppData
 class AppDataAssembly: Assembly {
 
     func assemble(container: Container) {
-
+        container.autoregister(Domain.MoviesRepository.self, initializer: AppData.MoviesRepository.init)
     }
 }

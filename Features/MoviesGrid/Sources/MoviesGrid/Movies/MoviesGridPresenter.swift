@@ -123,6 +123,9 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
     func getPosterImage(movie: MovieGridViewModel) {
         guard let path = movie.movie.posterPath else { return }
         getPosterImageUseCase.execute(path: path) { result in
+            result.failureHandler { error in
+                debugPrint(error.localizedDescription)
+            }
             guard let data = result.success else { return }
             movie.posterImage = UIImage(data: data)
             NotificationCenter.default.post(name: MovieGridViewModel.didDownloadPosterImageNN, object: movie)

@@ -13,6 +13,6 @@ import AppStorage
 class StorageAssembly: Assembly {
 
     func assemble(container: Container) {
-
+        container.register(AppData.MoviesLocalDataSource.self) { _ in AppStorage.MoviesLocalDataSource(userDefaults: UserDefaultsStorage()) }
     }
 }

@@ -8,33 +8,27 @@
 import Foundation
 import Common
 
-public enum GetPosterImageError: Error {
-
-    case requestError(Error?)
-    case jsonError(Error)
-}
-
 public protocol GetPosterImageUseCaseProtocol {
 
-    func execute(path: String, completion: @escaping ResultCompletion<Data, GetPosterImageError>)
+    func execute(path: String, completion: @escaping DomainResultCompletion<Data>)
 }
 
 public class GetPosterImageUseCase {
 
     // Properties
 
-    let remote: TmdbApiRemoteDataSource
+    let repository: MoviesRepository
 
     // Lifecycle
 
-    public init(remote: TmdbApiRemoteDataSource) {
-        self.remote = remote
+    public init(repository: MoviesRepository) {
+        self.repository = repository
     }
 }
 
 extension GetPosterImageUseCase: GetPosterImageUseCaseProtocol {
 
-    public func execute(path: String, completion: @escaping ResultCompletion<Data, GetPosterImageError>) {
-        remote.getPosterImage(path: path, completion: completion)
+    public func execute(path: String, completion: @escaping DomainResultCompletion<Data>) {
+        repository.posterImage(path: path, completion: completion)
     }
 }

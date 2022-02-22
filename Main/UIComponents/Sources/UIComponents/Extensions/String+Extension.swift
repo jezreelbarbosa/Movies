@@ -24,7 +24,7 @@ public extension String {
         return String(self[start...])
     }
 
-    static var newLine: String { "\n" }
+    static var newLine = "\n"
 
     static let empty = ""
 

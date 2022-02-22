@@ -8,34 +8,27 @@
 import Foundation
 import Common
 
-public enum PopularMoviesPageError: Error {
-
-    case requestError(Error?)
-    case jsonError(Error)
-    case emptyError
-}
-
 public protocol PopularMoviesPageUseCaseProtocol {
 
-    func execute(page: Int, locale: String, completion: @escaping ResultCompletion<[MovieResponse], PopularMoviesPageError>)
+    func execute(page: Int, locale: String, completion: @escaping DomainResultCompletion<[MovieResponse]>)
 }
 
 public class PopularMoviesPageUseCase {
 
     // Properties
 
-    let remote: TmdbApiRemoteDataSource
+    let repository: MoviesRepository
 
     // Lifecycle
 
-    public init(remote: TmdbApiRemoteDataSource) {
-        self.remote = remote
+    public init(repository: MoviesRepository) {
+        self.repository = repository
     }
 }
 
 extension PopularMoviesPageUseCase: PopularMoviesPageUseCaseProtocol {
 
-    public func execute(page: Int, locale: String, completion: @escaping ResultCompletion<[MovieResponse], PopularMoviesPageError>) {
-        remote.getPopularMovies(page: page, locale: locale, completion: completion)
+    public func execute(page: Int, locale: String, completion: @escaping DomainResultCompletion<[MovieResponse]>) {
+        repository.popularMovies(page: page, locale: locale, completion: completion)
     }
 }

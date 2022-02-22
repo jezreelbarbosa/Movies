@@ -7,12 +7,12 @@
 
 import Foundation
 import Swinject
-import Domain
+import AppData
 import Networking
 
 class NetworkingAssembly: Assembly {
 
     func assemble(container: Container) {
-        container.autoregister(Domain.TmdbApiRemoteDataSource.self, initializer: Networking.TmdbApiRemoteDataSource.init)
+        container.autoregister(AppData.TmdbApiRemoteDataSource.self, initializer: Networking.TmdbApiRemoteDataSource.init)
     }
 }

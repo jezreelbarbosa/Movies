@@ -8,34 +8,27 @@
 import Foundation
 import Common
 
-public enum SearchMoviesPageError: Error {
-
-    case requestError(Error?)
-    case jsonError(Error)
-    case emptyError
-}
-
 public protocol SearchMoviesPageUseCaseProtocol {
 
-    func execute(request: SearchMoviesRequest, completion: @escaping ResultCompletion<[MovieResponse], PopularMoviesPageError>)
+    func execute(request: SearchMoviesRequest, completion: @escaping DomainResultCompletion<[MovieResponse]>)
 }
 
 public class SearchMoviesPageUseCase {
 
-        // Properties
+    // Properties
 
-    let remote: TmdbApiRemoteDataSource
+    let repository: MoviesRepository
 
-        // Lifecycle
+    // Lifecycle
 
-    public init(remote: TmdbApiRemoteDataSource) {
-        self.remote = remote
+    public init(repository: MoviesRepository) {
+        self.repository = repository
     }
 }
 
 extension SearchMoviesPageUseCase: SearchMoviesPageUseCaseProtocol {
 
-    public func execute(request: SearchMoviesRequest, completion: @escaping ResultCompletion<[MovieResponse], PopularMoviesPageError>) {
-        remote.getSearchMovies(request: request, completion: completion)
+    public func execute(request: SearchMoviesRequest, completion: @escaping DomainResultCompletion<[MovieResponse]>) {
+        repository.searchMovies(request: request, completion: completion)
     }
 }

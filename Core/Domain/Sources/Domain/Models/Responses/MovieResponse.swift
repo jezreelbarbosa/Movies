@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import Common
 
-public struct MovieResponse: Decodable {
+public struct MovieResponse {
 
     // Properties
 
@@ -21,31 +20,17 @@ public struct MovieResponse: Decodable {
     public let posterPath: String?
     public let voteAverage: Double
 
-    // Coding Keys
-
-    private enum CodingKeys: String, CodingKey {
-        case id
-        case title
-        case releaseDate = "release_date"
-        case genreIds = "genre_ids"
-        case overview
-        case backdropPath = "backdrop_path"
-        case posterPath = "poster_path"
-        case voteAverage = "vote_average"
-    }
-
     // Lifecycle
 
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.title = try container.decodeIfPresent(String.self, forKey: .title).default
-        let dateString = try container.decodeIfPresent(String.self, forKey: .releaseDate).default
-        self.releaseDate = DateFormatter("yyyy-MM-dd").date(from: dateString)
-        self.genreIds = try container.decode([Int].self, forKey: .genreIds)
-        self.overview = try container.decodeIfPresent(String.self, forKey: .overview).default
-        self.backdropPath = try container.decode(String?.self, forKey: .backdropPath)
-        self.posterPath = try container.decode(String?.self, forKey: .posterPath)
-        self.voteAverage = try container.decodeIfPresent(Double.self, forKey: .voteAverage).default / 10.0
+    public init(id: Int, title: String, releaseDate: Date?, genreIds: [Int], overview: String,
+                backdropPath: String?, posterPath: String?, voteAverage: Double) {
+        self.id = id
+        self.title = title
+        self.releaseDate = releaseDate
+        self.genreIds = genreIds
+        self.overview = overview
+        self.backdropPath = backdropPath
+        self.posterPath = posterPath
+        self.voteAverage = voteAverage
     }
 }
