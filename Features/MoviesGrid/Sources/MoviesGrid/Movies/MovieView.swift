@@ -35,7 +35,7 @@ class MovieView: UICodeControl, NotificationTokenObserver {
     }
 
     public override func initLayout() {
-        posterImageView.fillHorizontally().top(0).aspectRatio(3/2)
+        posterImageView.fillHorizontally().top(0).aspectRatio(2/3)
         percentageView.size(42).leading(8).CenterY == posterImageView.Bottom
         percentageView.heightConstraint?.scaledConstant(for: .subheadline, maxValue: 42 * 1.6)
         percentageView.widthConstraint?.scaledConstant(for: .subheadline, maxValue: 42 * 1.6)

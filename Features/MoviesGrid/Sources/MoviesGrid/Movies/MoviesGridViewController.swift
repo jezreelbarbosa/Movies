@@ -33,6 +33,7 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
         title = Texts.MoviesGrid.moviesTitle
+        navigationItem.backButtonTitle = "    "
         addSearchField()
     }
 
