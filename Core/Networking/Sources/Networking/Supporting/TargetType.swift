@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias TargetCompletion = (Result<(data: Data, urlResponse: HTTPURLResponse), TargetError>) -> Void
+typealias TargetCompletion = (Result<(data: Data, response: HTTPURLResponse), TargetError>) -> Void
 
 protocol TargetType {
 
