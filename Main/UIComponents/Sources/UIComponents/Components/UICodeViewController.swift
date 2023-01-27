@@ -11,7 +11,7 @@ import UIKit
 open class UICodeViewController<T, U: UIView>: UIViewController {
 
     public let presenter: T
-    public private(set) lazy var mainView = U()
+    public private(set) lazy var rootView = U()
 
     public init(presenter: T) {
         self.presenter = presenter
@@ -19,7 +19,7 @@ open class UICodeViewController<T, U: UIView>: UIViewController {
     }
 
     open override func loadView() {
-        view = mainView
+        view = rootView
     }
 
     open override func viewDidLoad() {
@@ -29,7 +29,7 @@ open class UICodeViewController<T, U: UIView>: UIViewController {
     }
 
     public required init?(coder: NSCoder) {
-        preconditionFailure("This class has to be initialized with view code only")
+        fatalError("This class has to be initialized with view code only")
     }
 
     open func setupView() {}

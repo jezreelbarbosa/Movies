@@ -30,8 +30,8 @@ public class MoviesGridViewController: UICodeViewController<MoviesGridPresenting
     // Lifecycle
 
     public override func setupView() {
-        mainView.tableView.dataSource = self
-        mainView.tableView.delegate = self
+        rootView.tableView.dataSource = self
+        rootView.tableView.delegate = self
         title = Texts.MoviesGrid.moviesTitle
         navigationItem.backButtonTitle = "    "
         addSearchField()
@@ -109,11 +109,11 @@ extension MoviesGridViewController: MoviesGridViewable {
     public func show(movies: [MovieGridViewModel]) {
         self.movies = movies
         DispatchQueue.main.async {
-            self.mainView.tableView.reloadData()
+            self.rootView.tableView.reloadData()
         }
     }
 
     public func table(isLoading: Bool) {
-        mainView.table(isLoading: isLoading)
+        rootView.table(isLoading: isLoading)
     }
 }

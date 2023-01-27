@@ -15,8 +15,6 @@ public class MoviesGridNavigationController: UINavigationController {
         tabBarItem.title = Texts.MoviesGrid.moviesTitle
         tabBarItem.image = Assets.filmIcon.image
         navigationBar.prefersLargeTitles = true
-        if #available(iOS 15.0, *) {
-            navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
-        }
+        if #available(iOS 13.0, *) { navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance }
     }
 }

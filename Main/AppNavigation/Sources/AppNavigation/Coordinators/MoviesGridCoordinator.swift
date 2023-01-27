@@ -16,7 +16,7 @@ public protocol MoviesGridCoordinatorDelegate: CoordinatorDelegate {}
 
 public protocol MoviesGridVCFactory: DependencyFactory {
 
-    func makeMoviesGridViewController() -> MoviesGridViewController
+    func makeMoviesGridViewController(coordinator: MoviesGridCoordinator) -> MoviesGridViewController
 }
 
 // MARK: - Coordinator
@@ -46,7 +46,7 @@ public class MoviesGridCoordinator: NavigationCoordinator {
     // Functions
 
     public func start() {
-        let viewController = viewControllersFactory.makeMoviesGridViewController()
+        let viewController = viewControllersFactory.makeMoviesGridViewController(coordinator: self)
         navigationController.pushViewController(viewController, animated: true)
     }
 }

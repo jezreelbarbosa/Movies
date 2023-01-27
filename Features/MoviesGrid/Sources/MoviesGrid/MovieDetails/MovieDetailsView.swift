@@ -55,7 +55,7 @@ public class MovieDetailsView: UICodeView {
     public override func initLayout() {
         scrollView.fillSafeArea().layoutScrollAxis(.vertical)
 
-        backdropImageView.fillHorizontally().aspectRatio(16/9)
+        backdropImageView.fillHorizontally().aspectRatio(16/9).Top == safeAreaLayoutGuide.Top
 
         titleLabel.fillHorizontally(padding: 16).top(0)
     }

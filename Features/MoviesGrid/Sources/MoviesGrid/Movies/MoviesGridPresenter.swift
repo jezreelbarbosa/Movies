@@ -25,7 +25,7 @@ public protocol MoviesGridCoordinating: AnyObject {
 
 // MARK: - Presenter
 
-public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewable {
+public class MoviesGridPresenter: CodePresenter<MoviesGridViewable, MoviesGridCoordinating> {
 
     // Properties
 
@@ -43,18 +43,15 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
     var queryText: String = ""
     var searchConfig: SearchConfigResponse = .onlyOnSearchTyping
 
-    unowned let coordinator: MoviesGridCoordinating
     let popularMoviesPageUseCase: PopularMoviesPageUseCaseProtocol
     let getPosterImageUseCase: GetPosterImageUseCaseProtocol
     let searchMoviesPageUseCase: SearchMoviesPageUseCaseProtocol
 
     // Lifecycle
 
-    public init(coordinator: MoviesGridCoordinating,
-                popularMoviesPageUseCase: PopularMoviesPageUseCaseProtocol,
+    public init(popularMoviesPageUseCase: PopularMoviesPageUseCaseProtocol,
                 getPosterImageUseCase: GetPosterImageUseCaseProtocol,
                 searchMoviesPageUseCase: SearchMoviesPageUseCaseProtocol) {
-        self.coordinator = coordinator
         self.popularMoviesPageUseCase = popularMoviesPageUseCase
         self.getPosterImageUseCase = getPosterImageUseCase
         self.searchMoviesPageUseCase = searchMoviesPageUseCase
@@ -63,18 +60,18 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
     // Functions
 
     public func fetchPopularMovies() {
-        view.table(isLoading: true)
+        controller.table(isLoading: true)
         popularMoviesPageUseCase.execute(page: popularPage, locale: Configs.locale) { [weak self] result in
             guard let self = self else { return }
             result.successHandler { movies in
                 self.popularPage += 1
                 self.updatePopular(movies: movies.map({ MovieGridViewModel(movie: $0) }))
-                self.view.show(movies: self.popularMovies)
+                self.controller.show(movies: self.popularMovies)
             }
             result.failureHandler { error in
                 print(error)
             }
-            self.view.table(isLoading: false)
+            self.controller.table(isLoading: false)
         }
     }
 
@@ -89,7 +86,7 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
     }
 
     public func fetchSearchMovies(query: String, isNewQuery: Bool) {
-        view.table(isLoading: true)
+        controller.table(isLoading: true)
         if isNewQuery {
             searchPage = 1
             searchIndex = 1
@@ -101,12 +98,12 @@ public class MoviesGridPresenter<T>: CodePresenter<T> where T: MoviesGridViewabl
             result.successHandler { movies in
                 self.searchPage += 1
                 self.updateSearch(movies: movies.map({ MovieGridViewModel(movie: $0) }))
-                self.view.show(movies: self.searchMovies)
+                self.controller.show(movies: self.searchMovies)
             }
             result.failureHandler { error in
                 print(error)
             }
-            self.view.table(isLoading: false)
+            self.controller.table(isLoading: false)
         }
     }
 
@@ -149,7 +146,7 @@ extension MoviesGridPresenter: MoviesGridPresenting {
         self.queryText = queryText
         isSearching = !queryText.isEmpty
         guard isSearching else {
-            view.show(movies: self.popularMovies)
+            controller.show(movies: self.popularMovies)
             return
         }
 

@@ -48,7 +48,7 @@ public class MoviesGridView: UICodeView {
         DispatchQueue.main.async { [self] in
             isLoading ? loadingView.startAnimating() : loadingView.stopAnimating()
             tableView.tableFooterView = isLoading ? loadingView : nil
-            UIView.animate(withDuration: 0.4) {
+            UIView.animate(withDuration: 0.4) { [tableView] in
                 tableView.contentOffset.y -= isLoading ? 0 : 16
             }
         }

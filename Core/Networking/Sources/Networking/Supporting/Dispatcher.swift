@@ -42,9 +42,9 @@ class Dispatcher {
 
     func makeURLRequest(endpoint: TargetType) -> URLRequest? {
         let fullPath = endpoint.baseURL + endpoint.path + joinedParameters(from: endpoint.parameters)
-        let urlString = fullPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-
-        guard let url = URL(string: urlString) else { return nil }
+        guard let urlString = fullPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: urlString)
+        else { return nil }
 
         var request = URLRequest(url: url, cachePolicy: endpoint.cachePolicy)
         request.httpMethod = endpoint.method
@@ -54,7 +54,6 @@ class Dispatcher {
                 request.addValue(header.value, forHTTPHeaderField: header.key)
             }
         }
-
         return request
     }
 

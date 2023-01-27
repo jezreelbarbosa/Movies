@@ -12,8 +12,8 @@ extension RemoteErrorCode: LocalizedError {
 
     public var errorDescription: String? {
         switch self {
-        case .remoteErrorE001:
-            return "Código de erro 001"
+//        case .remoteErrorE001:
+//            return "Código de erro 001"
         case .unknownError:
             return "Erro desconhecido"
         }

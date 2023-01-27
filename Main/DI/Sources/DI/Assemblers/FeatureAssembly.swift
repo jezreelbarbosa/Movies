@@ -26,7 +26,7 @@ class FeatureAssembly: Assembly {
 
     func assembleMoviesGrid(container: Container) {
         container.register(MoviesGridCoordinating.self) { $0.resolveSafe(MoviesGridCoordinator.self) }
-        container.autoregister(MoviesGridPresenter<MoviesGridViewController>.self, initializer: MoviesGridPresenter.init)
+        container.autoregister(MoviesGridPresenter.self, initializer: MoviesGridPresenter.init)
     }
 
     func assembleFavoriteMovies(container: Container) {
