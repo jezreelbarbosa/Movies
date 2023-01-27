@@ -1,3 +1,6 @@
+import Common
+import AppCoordinator
+import DI
 import UIKit
 
 @UIApplicationMain
@@ -8,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 //    var dependencyInjector: DependencyInjector!
 //    var assembler: Assembler!
-//    var appCoordinator: AppCoordinator!
+    var appCoordinator: AppCoordinator!
 
     // Methods
 

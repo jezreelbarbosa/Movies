@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D471D722984350F00356F28 /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 0D471D712984350F00356F28 /* Common */; };
+		0D471D742984350F00356F28 /* DI in Frameworks */ = {isa = PBXBuildFile; productRef = 0D471D732984350F00356F28 /* DI */; };
 		0DDC2E6C2703EAA0002CCBA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDC2E6B2703EAA0002CCBA5 /* AppDelegate.swift */; };
 		0DDC2E752703EAA3002CCBA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DDC2E742703EAA3002CCBA5 /* Assets.xcassets */; };
 		0DDC2E782703EAA3002CCBA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DDC2E762703EAA3002CCBA5 /* LaunchScreen.storyboard */; };
@@ -87,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D471D722984350F00356F28 /* Common in Frameworks */,
+				0D471D742984350F00356F28 /* DI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +213,8 @@
 			);
 			name = Movies;
 			packageProductDependencies = (
+				0D471D712984350F00356F28 /* Common */,
+				0D471D732984350F00356F28 /* DI */,
 			);
 			productName = Movies;
 			productReference = 0DDC2E682703EA9F002CCBA5 /* Movies.app */;
@@ -534,6 +540,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0D471D712984350F00356F28 /* Common */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Common;
+		};
+		0D471D732984350F00356F28 /* DI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0DDC2E602703EA9F002CCBA5 /* Project object */;
 }
