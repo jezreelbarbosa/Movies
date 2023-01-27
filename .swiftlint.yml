@@ -26,10 +26,10 @@ force_try: error
 opt_in_rules:
   - force_unwrapping
 
-included:
-  - Core/
-  - Main/
-  - Features/
+#included:
+#  - Core/
+#  - Main/
+#  - Features/
 
 custom_rules:
 

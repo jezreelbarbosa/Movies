@@ -7,16 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D9DFE2727049B2B009EDADB /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9DFE2627049B2B009EDADB /* Common */; };
-		0D9DFE2927049B2B009EDADB /* DI in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9DFE2827049B2B009EDADB /* DI */; };
-		0D9DFE2B27049B2B009EDADB /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9DFE2A27049B2B009EDADB /* UIComponents */; };
-		0D9DFE2D27049F1C009EDADB /* AppData in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9DFE2C27049F1C009EDADB /* AppData */; };
-		0D9DFE2F27049F1C009EDADB /* AppNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9DFE2E27049F1C009EDADB /* AppNavigation */; };
-		0D9DFE3127049F1C009EDADB /* AppStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9DFE3027049F1C009EDADB /* AppStorage */; };
-		0D9DFE3327049F1C009EDADB /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9DFE3227049F1C009EDADB /* Domain */; };
-		0D9DFE3527049F1C009EDADB /* FavoriteMovies in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9DFE3427049F1C009EDADB /* FavoriteMovies */; };
-		0D9DFE3727049F1C009EDADB /* MoviesGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9DFE3627049F1C009EDADB /* MoviesGrid */; };
-		0D9DFE3927049F1C009EDADB /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9DFE3827049F1C009EDADB /* Networking */; };
 		0DDC2E6C2703EAA0002CCBA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDC2E6B2703EAA0002CCBA5 /* AppDelegate.swift */; };
 		0DDC2E752703EAA3002CCBA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DDC2E742703EAA3002CCBA5 /* Assets.xcassets */; };
 		0DDC2E782703EAA3002CCBA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DDC2E762703EAA3002CCBA5 /* LaunchScreen.storyboard */; };
@@ -97,16 +87,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D9DFE3127049F1C009EDADB /* AppStorage in Frameworks */,
-				0D9DFE3527049F1C009EDADB /* FavoriteMovies in Frameworks */,
-				0D9DFE3327049F1C009EDADB /* Domain in Frameworks */,
-				0D9DFE2B27049B2B009EDADB /* UIComponents in Frameworks */,
-				0D9DFE2727049B2B009EDADB /* Common in Frameworks */,
-				0D9DFE2F27049F1C009EDADB /* AppNavigation in Frameworks */,
-				0D9DFE3727049F1C009EDADB /* MoviesGrid in Frameworks */,
-				0D9DFE2D27049F1C009EDADB /* AppData in Frameworks */,
-				0D9DFE3927049F1C009EDADB /* Networking in Frameworks */,
-				0D9DFE2927049B2B009EDADB /* DI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,16 +209,6 @@
 			);
 			name = Movies;
 			packageProductDependencies = (
-				0D9DFE2627049B2B009EDADB /* Common */,
-				0D9DFE2827049B2B009EDADB /* DI */,
-				0D9DFE2A27049B2B009EDADB /* UIComponents */,
-				0D9DFE2C27049F1C009EDADB /* AppData */,
-				0D9DFE2E27049F1C009EDADB /* AppNavigation */,
-				0D9DFE3027049F1C009EDADB /* AppStorage */,
-				0D9DFE3227049F1C009EDADB /* Domain */,
-				0D9DFE3427049F1C009EDADB /* FavoriteMovies */,
-				0D9DFE3627049F1C009EDADB /* MoviesGrid */,
-				0D9DFE3827049F1C009EDADB /* Networking */,
 			);
 			productName = Movies;
 			productReference = 0DDC2E682703EA9F002CCBA5 /* Movies.app */;
@@ -492,18 +462,18 @@
 				DEVELOPMENT_TEAM = XCSQ883CT6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Movies/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TMDB;
+				INFOPLIST_KEY_CFBundleDisplayName = WeMovie;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jezreelbarbosa.Movies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -522,18 +492,18 @@
 				DEVELOPMENT_TEAM = XCSQ883CT6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Movies/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TMDB;
+				INFOPLIST_KEY_CFBundleDisplayName = WeMovie;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jezreelbarbosa.Movies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -564,49 +534,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0D9DFE2627049B2B009EDADB /* Common */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Common;
-		};
-		0D9DFE2827049B2B009EDADB /* DI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DI;
-		};
-		0D9DFE2A27049B2B009EDADB /* UIComponents */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = UIComponents;
-		};
-		0D9DFE2C27049F1C009EDADB /* AppData */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppData;
-		};
-		0D9DFE2E27049F1C009EDADB /* AppNavigation */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppNavigation;
-		};
-		0D9DFE3027049F1C009EDADB /* AppStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppStorage;
-		};
-		0D9DFE3227049F1C009EDADB /* Domain */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Domain;
-		};
-		0D9DFE3427049F1C009EDADB /* FavoriteMovies */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FavoriteMovies;
-		};
-		0D9DFE3627049F1C009EDADB /* MoviesGrid */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MoviesGrid;
-		};
-		0D9DFE3827049F1C009EDADB /* Networking */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Networking;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0DDC2E602703EA9F002CCBA5 /* Project object */;
 }
